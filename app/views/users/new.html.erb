@@ -1,0 +1,35 @@
+
+<div class="ui very padded text container segment orange">
+  <div class="ui middle aligned center aligned grid">
+    <div class="column">
+      <h2 class="ui orange header">
+        <div class="content">
+          Create Account
+        </div>
+      </h2>
+      <%= form_for @user, html: {class:"ui large form error"} do |f| %>
+      <%if flash[:errors] %>
+        <div class="ui error message">
+            <% flash[:errors].each do |err| %>
+            <ul class="list">
+              <li><%= err %></li>
+            </ul>
+            <% end %>
+        </div>
+      <% end %>
+      <div class="ui segment stackable">
+        <%= f.label :username, class: "field" %>
+        <%= f.text_field :username, class: "ui left icon input" %>
+        <i class="user icon"></i>
+      </div>
+      <div class="ui segment stackable">
+        <%= f.label :password, class: "field" %>
+        <%= f.password_field :password, class: "ui left icon input" %>
+        <i class="lock icon"></i>
+      </div>
+      <%= f.submit "Create Account", class: "ui fluid large orange submit button"%>
+      <% end %>
+    </div>
+  </div>
+
+</div>

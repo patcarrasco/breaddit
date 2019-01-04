@@ -1,0 +1,69 @@
+<div class="four wide column">
+  <div class="ui padded card segment">
+    <div class="content">
+      <div class="header">
+        <h1><%= @user.username %></h1>
+      </div>
+      <div class="description">
+        <%= @user.description %>
+      </div>
+    </div>
+    <div class="extra content">
+      <span class="left aligned ">
+        following
+        <%= @user.amt_following %>
+      </span>
+      <span class="right aligned">
+        followers
+        <%= @user.amt_followers %>
+      </span>
+    </div>
+    <%= button_to "logout", sessions_delete_path, method: :delete, class: "ui orange fluid button" %>
+  </div>
+</div>
+<div class="eight wide column">
+  <div class="ui very padded text segment orange">
+    <div class="ui one stackable cards">
+      <% @posts.each do |post| %>
+        <a href=<%="/posts/#{post.id}"%> class="card">
+          <div class="content">
+            <div class="header">
+              <h2>
+                <%= post.title %>
+              </h2>
+            </div>
+            <p class="description">
+              <%= post.content %>
+            </p>
+          </div>
+          <div class="extra content">
+            <span class="left floated button">
+              <%= button_to "edit post", edit_post_path(post.id), method: :get, class: "ui orange button"%>
+            </span>
+            <span class="right floated button">
+              <%= button_to "delete post", post_path(post.id), method: :delete, class: "ui orange button" %>
+            </span>
+          </div>
+        </a>
+      <% end %>
+    </div>
+    <div class="ui padded text segment center aligned inverted black">
+      <%= link_to_previous_page @posts, 'Previous Page' %>
+      ||
+      <%= page_entries_info @posts %>
+      ||
+      <%= link_to_next_page @posts, 'Next Page' %>
+    </div>
+  </div>
+</div>
+<div class="four wide column">
+  <div class="ui vertical menu">
+    <div class="item">
+      Account Management
+      <div class="menu">
+        <%= link_to "home", home_path, method: :get, class: "item" %>
+        <%= link_to "edit account", edit_user_path(@user), class: "item" %>
+      </div>
+    </div>
+  </div>
+</div>

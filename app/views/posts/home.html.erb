@@ -1,0 +1,33 @@
+
+
+<div class="four wide column">
+  <div class="">
+    <div class="content">
+      <div class="header">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="eight wide column">
+    <%= render "posts" %>
+
+        <div class="ui padded text segment center aligned inverted black">
+          <%= link_to_previous_page @posts, 'Previous Page' %> ||
+          <%= page_entries_info @posts %> ||
+          <%= link_to_next_page @posts, 'Next Page' %>
+        </div>
+</div>
+
+
+<div class="four wide column">
+  <div class="">
+    <div class="content">
+      <div class="header">
+        <h3></h3>
+
+      </div>
+    </div>
+  </div>
+</div>

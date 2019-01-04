@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Breaddit</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta charset="utf-8"/>
+    <title>Semantic UI CDN</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
+    <style type="text/css">
+      body {
+        background-color: #e6dad761;
+      }
+    </style>
+
+  </head>
+
+  <body id="last_layer">
+
+    <div class="ui inverted violet menu">
+      <div class="header item">
+        B R E A D D I T
+      </div>
+      <% if session[:user_id] %>
+        <div class="ui secondary menu right aligned">
+          <div class="ui item">
+          <%= link_to "all", posts_path, class: "item" %>
+          <%= link_to "feed", home_path, class: "item" %>
+          <%= link_to "new post", new_post_path, class: "item" %>
+          <%= link_to "account", account_path, class: "item" %>
+        </div>
+      </div>
+        <% else %>
+        <div class="ui secondary menu right aligned">
+          <%= link_to "all", posts_path, class: "item" %>
+        </div>
+          <div class="item">
+            <%= button_to "login", new_session_path, class: "ui small orange button", method: :get %>
+            <%= button_to "create account", new_user_path, class: "ui small orange button", method: :get %>
+          </div>
+        <% end %>
+    </div>
+
+    <div class="ui grid">
+      <br>
+        <%= yield %>
+    </div>
+
+  </body>
+
+</html>

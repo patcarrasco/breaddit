@@ -1,0 +1,18 @@
+<%= form_for @comment, html: {class:"ui large form error"} do |f| %>
+
+<%if flash[:errors] %>
+  <div class="ui error message">
+      <% flash[:errors].each do |err| %>
+      <ul class="list">
+        <li><%= err %></li>
+      </ul>
+      <% end %>
+  </div>
+<% end %>
+<div class="ui segment stackable">
+  <%= f.text_area :content, class: "ui input" %>
+</div>
+<%= hidden_field_tag "comment[user_id]", session[:user_id] %>
+<%= hidden_field_tag "comment[post_id]", @post.id %>
+<%= f.submit "add comment", class: "ui orange submit button"%>
+<% end %>

@@ -1,0 +1,15 @@
+
+
+<h2>username: <%= @user.username  %> </h2>
+<h2>- <%= @user.description %></h2>
+
+<h1>Posts</h1>
+
+<ul>
+  <% @posts.each do |post| %>
+  <p>
+    Title : <%= post.title %> <br>
+    <%= post.content %>
+  </p>
+  <% end %>
+</ul>

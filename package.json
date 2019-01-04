@@ -1,0 +1,7 @@
+{
+  "name": "self_reference_models",
+  "private": true,
+  "dependencies": {
+    "semantic-ui": "^2.4.2"
+  }
+}

@@ -1,0 +1,30 @@
+
+
+<div class="ui very padded text segment orange">
+    <div class="ui one stackable cards">
+      <% @posts.each do |post| %>
+      <a href=<%="/posts/#{post.id}"%> class="card">
+
+        <div class="content">
+          <div class="header">
+            <h2>
+              <%= post.title %>
+            </h2>
+          </div>
+          <p class="description">
+            <%= post.content %>
+          </p>
+        </div>
+        <div class="extra content">
+          <span class="">
+            <i class="bottom floated like icon"></i>
+            <%= post.amt_likes %>
+          </span>
+          <span class="right floated author">
+            <%= image_tag "manpoemlogo.png", class: "ui avatar image"%>
+            <%= post.user.username %>
+          </span>
+        </div>
+      </a>
+      <% end %>
+    </div>
