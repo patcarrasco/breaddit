@@ -14,4 +14,4 @@ rails s
 
 ## Additional Notes
 
-This project is my first at the Flatiron School, before I was proficient with Javascript. I'm excited to work on this in the future and create a new front-end for this web app.
+This project was my first at the Flatiron School, before I was proficient with Javascript. I'm excited to work on this in the future and create a new front-end for this web app.
