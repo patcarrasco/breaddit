@@ -9,10 +9,12 @@
       <% end %>
   </div>
 <% end %>
-<div class="ui segment stackable">
-  <%= f.text_area :content, class: "ui input" %>
+<div style="border-bottom: solid 1px orange; padding-bottom:10px">
+  <div style="display:flex; flex-direction: row;">
+    <%= f.text_area :content, rows: 1,  class: "ui input" %>
+    <%= f.submit "post", class: "ui mini orange submit button", style:"max-height: 50px; padding: 1;"%>
+  </div>
 </div>
 <%= hidden_field_tag "comment[user_id]", session[:user_id] %>
 <%= hidden_field_tag "comment[post_id]", @post.id %>
-<%= f.submit "add comment", class: "ui orange submit button"%>
 <% end %>

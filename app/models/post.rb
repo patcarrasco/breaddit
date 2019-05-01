@@ -17,4 +17,8 @@ class Post < ApplicationRecord
     self.users.count
   end
 
+  def recent_comments
+    return comments.first(5)
+  end
+
 end

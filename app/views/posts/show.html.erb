@@ -8,96 +8,81 @@
   <% end %>
 <% end %>
 
-    <div class="four wide column">
-      <div class="ui card">
-        <div class="image dimmable">
-          <div class="ui blurring inverted dimmer transition hidden">
-            <div class="content">
-              <div class="center">
-                <div class="ui teal button">
-                  Follow
-                </div>
-              </div>
+<div class="three wide column">
+  <div class="ui card">
+    <div class="image dimmable">
+      <div class="ui blurring inverted dimmer transition hidden">
+        <div class="content">
+          <div class="center">
+            <div class="ui teal button">
+              Follow
             </div>
           </div>
-          <%= image_tag "manpoemlogo.png", class: "small"%>
         </div>
-        <div class="content">
-          <div class="header">
-            <%= @post.user.username %>
-          </div>
-          <div class="meta">
-            <%= @post.user.description %>
-          </div>
+      </div>
+      <%= image_tag "manpoemlogo.png", class: "small"%>
+    </div>
+    <div class="content">
+      <div class="header">
+        <%= @post.user.username %>
+      </div>
+      <div class="meta">
+        <%= @post.user.description %>
+      </div>
+    </div>
+    <% if session[:user_id]%>
+      <div class="extra content">
+          <%= button_to @follow_message, follow_path(@post.user.id), method: :post, class: "ui fluid basic button"%>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="eight wide column">
+  <div class="ui card fluid">
+    <div class="content">
+        <%= @post.content %>
+    </div>
+    <div class="image">
+      <img src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+    </div>
+    <div class="extra content">
+      <span class="">
+        <div class="ui labeled button" tabindex="0">
+          <% if session[:user_id]%>
+            <%= button_to @like_message, support_path(@post.id), method: :post, class: "ui red button" %>
+          <% end %>
+          <a class="ui basic label">
+            <%= @post.amt_likes%> likes
+        </a>
         </div>
-        <% if session[:user_id]%>
-        <div class="extra content">
-            <%= button_to @follow_message, follow_path(@post.user.id), method: :post, class: "ui fluid basic button"%>
+      </span>
+      <span class="right floated author">
+        <%= image_tag "manpoemlogo.png", class: "ui avatar image"%>
+        <%= @post.user.username %>
+      </span>
+    </div>
+    <div class="content" style="max-height: 100vh; overflow:auto;">
+      <%= render "comment" %>
+    </div>
+      <div style="margin: 10px">
+        <%if @comments.length > 0 %>
+        <% @comments.reverse.each do |comment| %>
+        <div style="margin: 1px">
+          <span style="font-weight: bold;"><%= comment.user.username %> </span>
+          <%= comment.content %>
         </div>
         <% end %>
+        <% end %>
       </div>
+  </div>
+</div>
+<div class="five wide column" style="padding 0px; max-height:100vh; overflow:auto;">
+  <h3 class="ui top attached header center aligned inverted">
+    Recent posts by <%= @post.user.username %>
+  </h3>
+  <div>
+    <div>
+      <%= render "posts" %>
     </div>
-    <div class="seven wide column">
-      <div class="ui card fluid">
-        <div class="content">
-          <div class="header">
-            <h2>
-              <%= @post.title %>
-            </h2>
-          </div>
-          <p class="description">
-            <%= @post.content %>
-          </p>
-        </div>
-        <div class="extra content">
-          <span class="">
-            <div class="ui labeled button" tabindex="0">
-              <% if session[:user_id]%>
-                <%= button_to @like_message, support_path(@post.id), method: :post, class: "ui red button" %>
-              <% end %>
-              <a class="ui basic label">
-                <%= @post.amt_likes%>
-            </a>
-            </div>
-          </span>
-          <span class="right floated author">
-            <%= image_tag "manpoemlogo.png", class: "ui avatar image"%>
-            <%= @post.user.username %>
-          </span>
-        </div>
-        <div class="content">
-          <%= render "comment" %>
-        </div>
-        <div class="ui stackable attached card fluid">
-          <%if @comments.length > 0 %>
-          <% @comments.each do |comment| %>
-          <div class="ui card fluid">
-            <div class="content">
-
-            <div class="description">
-              <%= comment.content %>
-            </div>
-
-          </div>
-          <div class="extra content">
-            <span class="right floated author">
-              <%= image_tag "manpoemlogo.png", class: "ui avatar image"%>
-              <%= comment.user.username %>
-            </span>
-          </div>
-        </div>
-          <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="five wide column">
-      <h3 class="ui top attached header center aligned inverted">
-        Recent posts by <%= @post.user.username %>
-      </h3>
-        <div class="ui attached">
-          <div class="content fluid">
-            <%= render "posts" %>
-          </div>
-        </div>
-      </div>
+  </div>
+</div>

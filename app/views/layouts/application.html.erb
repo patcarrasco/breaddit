@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Breaddit</title>
+    <title>mepost</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta charset="utf-8"/>
@@ -22,7 +22,7 @@
 
     <div class="ui inverted violet menu">
       <div class="header item">
-        B R E A D D I T
+        mepost
       </div>
       <% if session[:user_id] %>
         <div class="ui secondary menu right aligned">
@@ -44,7 +44,7 @@
         <% end %>
     </div>
 
-    <div class="ui grid">
+    <div class="ui two column centered grid">
       <br>
         <%= yield %>
     </div>
