@@ -1,25 +1,7 @@
-# README
+# litepost
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+litepost is a content sharing web app, made with with Rails. 
 
-Things you may want to cover:
+## Additional Notes
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# breaddit
+This project is my first at the flatiron school, before I was proficient with Javascript. I'm excited to work on this in the future and create a new front-end for this web app.
