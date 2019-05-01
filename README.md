@@ -1,6 +1,16 @@
-# litepost
+# Litepost
 
 litepost is a content sharing web app, made with with Rails. 
+
+## Instructions
+
+Clone the repo and run:
+
+```Ruby
+bundle install
+rails db:setup
+rails s
+```
 
 ## Additional Notes
 
