@@ -74,12 +74,21 @@ class PostsController < ApplicationController
 
   def support
     @session_user = User.find(session[:user_id])
-    if @session_user.find_like(params[:id]).empty?
-      @session_user.like_post(params[:id])
-      redirect_back(fallback_location: posts_path)
-    else
-      @session_user.unlike_post(params[:id])
-      redirect_back(fallback_location: posts_path)
+
+    respond_to do |format|
+      if @session_user.find_like(params[:id]).empty?
+        @session_user.like_post(params[:id])
+        format.html {redirect_to(@post)}
+        format.js
+        format.json {render json: @post}
+        # redirect_back(fallback_location: posts_path)      
+      else
+        @session_user.unlike_post(params[:id])
+        # redirect_back(fallback_location: posts_path)
+        format.html {redirect_to(@post)}
+        format.js
+        format.json {render json: @post}
+      end
     end
   end
 
@@ -90,7 +99,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:user_id, :title, :content)
+    params.require(:post).permit(:user_id, :title, :content, :image)
   end
 
 end

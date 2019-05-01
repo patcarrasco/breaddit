@@ -69,3 +69,6 @@ gem 'bcrypt'
 gem 'kaminari'
 
 gem 'semantic-ui-sass'
+
+gem 'carrierwave', '~> 1.0'
+

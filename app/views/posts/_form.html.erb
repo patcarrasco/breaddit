@@ -7,6 +7,7 @@
           Post
         </div>
       </h2>
+
       <%= form_for @post, html: {class:"ui large form error"} do |f| %>
 
       <%if flash[:errors] %>
@@ -19,10 +20,8 @@
         </div>
       <% end %>
 
-      <div class="ui segment stackable">
-        <%= f.label :title, class: "field" %>
-        <%= f.text_field :title, class: "ui input" %>
-      </div>
+        <%= f.file_field :image %>
+        
       <div class="ui segment stackable">
         <%= f.label :content, class: "field" %>
           <%= f.text_area :content, class: "ui input" %>
